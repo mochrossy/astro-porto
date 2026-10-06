@@ -2,6 +2,7 @@
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import SEO from '../components/SEO.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 import '../styles/global.css';
 import { getLangFromUrl, type Lang } from '../i18n';
 
@@ -17,7 +18,7 @@ interface Props {
 
 const {
   title,
-  description = 'Portofolio pribadi Moch. Rossy Avian I.',
+  description = 'Portfolio Moch. Rossy Avian I.',
   image,
   type,
   publishedAt,
@@ -45,6 +46,12 @@ const {
       <slot />
     </main>
     <Footer />
+
+    <!-- Floating WhatsApp Button -->
+    <WhatsAppButton
+      phone="6281234567890"
+      message="Hi Rossy, I found your portfolio and I'd like to discuss a project with you."
+    />
   </body>
 </html>
 
