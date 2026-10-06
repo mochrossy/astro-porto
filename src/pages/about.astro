@@ -1,0 +1,280 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const skills = [
+  { name: 'Linux Server', level: 90, category: 'DevOps' },
+  { name: 'Laravel / PHP', level: 85, category: 'Backend' },
+  { name: 'Docker', level: 80, category: 'DevOps' },
+  { name: 'MySQL / MariaDB', level: 85, category: 'Database' },
+  { name: 'Tailwind CSS', level: 75, category: 'Frontend' },
+  { name: 'Astro', level: 70, category: 'Frontend' },
+];
+
+const experiences = [
+  {
+    period: '2019 - Present',
+    role: 'Senior IT Consultant & DevOps Project Leader',
+    company: 'PT Example Company',
+    description: 'Leading infrastructure teams for enterprise clients in banking, mining, and telecommunications sectors. Focus on containerization (Docker), database migration, and reverse proxy optimization.',
+  },
+  {
+    period: '2014 - 2019',
+    role: 'System Administrator',
+    company: 'PT Example Second',
+    description: 'Managed Linux servers for production applications, mail server configuration, and centralized monitoring implementation.',
+  },
+  {
+    period: '2008 - 2014',
+    role: 'IT Support & Network Engineer',
+    company: 'PT Example Third',
+    description: 'Handled network troubleshooting, router and switch configuration, and technical support for internal users.',
+  },
+];
+---
+
+<BaseLayout
+  title="About"
+  description="About Moch. Rossy Avian I. — System Administrator & DevOps Engineer with 19+ years of experience."
+>
+  <div class="container">
+    <header class="page-header">
+      <h1>About Me</h1>
+      <p>Get to know me better and what I work on.</p>
+    </header>
+
+    <!-- Bio -->
+    <section class="bio">
+      <h2>Hello, I'm Moch. Rossy Avian I.</h2>
+      <p>
+        Senior IT Consultant & DevOps Project Leader with over 19 years of
+        experience in IT infrastructure, database engineering, and enterprise
+        project management. Proven track record of architecting resilient
+        system solutions and leading nationwide infrastructure rollouts for
+        major financial, mining, and telecommunications organizations.
+      </p>
+      <p>
+        Hands-on technical mastery in DevOps containerization (Docker),
+        database migrations (MS SQL to MariaDB), and reverse proxy optimization,
+        combined with strong strategic leadership in ITSM, DRP/BCP, and
+        cross-functional team management. Currently expanding into fullstack
+        web development with Laravel, Astro, and Tailwind CSS.
+      </p>
+
+      <div class="contact-info">
+        <div class="info-item">
+          <span class="info-label">Email</span>
+          <span class="info-value">email@domain.com</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Location</span>
+          <span class="info-value">Bekasi, West Java, Indonesia</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Status</span>
+          <span class="info-value">Available for remote work</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills-section">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        {skills.map(skill => (
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">{skill.name}</span>
+              <span class="skill-level">{skill.level}%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-fill" style={`width: ${skill.level}%`}></div>
+            </div>
+            <span class="skill-category">{skill.category}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="experience-section">
+      <h2>Work Experience</h2>
+      <div class="timeline">
+        {experiences.map(exp => (
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-period">{exp.period}</span>
+              <h3>{exp.role}</h3>
+              <span class="timeline-company">{exp.company}</span>
+              <p>{exp.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    text-align: center;
+    padding: 2rem 0 3rem;
+  }
+  .page-header h1 { font-size: 3rem; }
+  .page-header p {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+  }
+
+  .bio { max-width: 800px; margin: 0 auto 4rem; }
+  .bio h2 { font-size: 1.75rem; margin-bottom: 1rem; }
+  .bio p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+  .contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--color-bg-alt);
+    border-radius: 12px;
+    margin-top: 2rem;
+  }
+  .info-item { display: flex; flex-direction: column; }
+  .info-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    margin-bottom: 0.25rem;
+  }
+  .info-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .skills-section { max-width: 800px; margin: 0 auto 4rem; }
+  .skills-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-item {
+    background: white;
+    padding: 1.25rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+  .skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+  .skill-name { font-weight: 600; color: var(--color-text); }
+  .skill-level { font-weight: 700; color: var(--color-primary); }
+  .skill-bar {
+    height: 8px;
+    background: var(--color-bg-alt);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+  .skill-bar-fill {
+    height: 100%;
+    background: var(--color-primary);
+    border-radius: 999px;
+    transition: width 0.6s ease;
+  }
+  .skill-category {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    font-weight: 600;
+  }
+
+  .experience-section { max-width: 800px; margin: 0 auto; }
+  .experience-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-border);
+  }
+  .timeline-item {
+    position: relative;
+    padding-bottom: 2rem;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-dot {
+    position: absolute;
+    left: -1.625rem;
+    top: 0.5rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px var(--color-primary);
+  }
+  .timeline-content {
+    background: white;
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+  .timeline-period {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-yellow);
+    background: var(--color-primary);
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+  }
+  .timeline-content h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+  }
+  .timeline-company {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+  .timeline-content p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .page-header h1 { font-size: 2rem; }
+    .skills-section h2,
+    .experience-section h2 { font-size: 1.5rem; }
+  }
+</style>

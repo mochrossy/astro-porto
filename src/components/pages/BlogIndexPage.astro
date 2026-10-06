@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../PostCard.astro';
+import { useTranslations, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// Filter hanya post dari bahasa yang aktif
+const posts = (await getCollection('blog'))
+  .filter(post => !post.data.draft && post.id.startsWith(`${lang}/`))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+---
+
+<BaseLayout
+  title={t('blog.title')}
+  description={t('blog.subtitle')}
+  lang={lang}
+>
+  <div class="container">
+    <header class="page-header">
+      <h1>{t('blog.title')}</h1>
+      <p>{t('blog.subtitle')}</p>
+    </header>
+
+    {posts.length === 0 ? (
+      <p class="empty">
+        {lang === 'id'
+          ? 'Belum ada artikel dalam bahasa Indonesia. Cek kembali nanti.'
+          : 'No posts yet. Check back soon.'}
+      </p>
+    ) : (
+      <div class="post-grid">
+        {posts.map(post => {
+          const slug = post.id.replace(/^(en|id)\//, '');
+          return (
+            <PostCard
+              slug={slug}
+              lang={lang}
+              title={post.data.title}
+              description={post.data.description}
+              publishedAt={post.data.publishedAt}
+              category={post.data.category}
+              cover={post.data.cover}
+            />
+          );
+        })}
+      </div>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    text-align: center;
+    padding: 2rem 0 3rem;
+  }
+  .page-header h1 { font-size: 3rem; }
+  .page-header p {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+  }
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  .empty {
+    text-align: center;
+    color: var(--color-text-muted);
+    padding: 3rem;
+  }
+</style>

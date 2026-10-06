@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "blog": "Blog",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "System Administrator & DevOps",
+    "greeting": "Hello, I'm",
+    "subtitle": "Senior IT Consultant with 19+ years of experience in IT infrastructure, database engineering, and enterprise project management.",
+    "cta_portfolio": "View Portfolio",
+    "cta_contact": "Contact Me"
+  },
+  "about": {
+    "title": "Who am I?",
+    "read_more": "Learn more about me"
+  },
+  "services": {
+    "title": "What I'm good at",
+    "subtitle": "Services I offer"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "subtitle": "Some projects I have worked on",
+    "view_all": "View All Portfolio"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Notes, tutorials, and experiences",
+    "view_all": "View All Posts",
+    "back": "Back to Blog",
+    "read_more": "Read More",
+    "by": "By",
+    "empty": "No posts yet."
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Have a question, project idea, or want to collaborate?",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent successfully!",
+    "error": "Failed to send message. Please try again."
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  },
+  "language": {
+    "switch": "Switch Language",
+    "id": "Indonesian",
+    "en": "English"
+  }
+}

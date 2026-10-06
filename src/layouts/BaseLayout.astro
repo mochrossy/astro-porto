@@ -1,0 +1,61 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import SEO from '../components/SEO.astro';
+import '../styles/global.css';
+import { getLangFromUrl, type Lang } from '../i18n';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  publishedAt?: Date;
+  author?: string;
+  lang?: Lang;
+}
+
+const {
+  title,
+  description = 'Portofolio pribadi Moch. Rossy Avian I.',
+  image,
+  type,
+  publishedAt,
+  author,
+  lang = getLangFromUrl(Astro.url),
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <SEO
+      title={title}
+      description={description}
+      image={image}
+      type={type}
+      publishedAt={publishedAt}
+      author={author}
+      lang={lang}
+    />
+  </head>
+  <body>
+    <Navbar />
+    <main class="main-content">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .main-content {
+    flex: 1;
+    padding: 3rem 0;
+  }
+</style>

@@ -1,0 +1,89 @@
+---
+import { getLangFromUrl, useTranslations, translatePath } from '../i18n';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Deteksi apakah halaman saat ini bilingual
+const path = Astro.url.pathname;
+const isBilingual = path.includes('/blog') || path.includes('/portfolio');
+
+// Link navbar
+const links = [
+  { href: '/', label: t('nav.home') },
+  { href: '/about', label: t('nav.about') },
+  {
+    href: lang === 'id' && isBilingual ? '/id/blog' : '/blog',
+    label: t('nav.blog'),
+  },
+  {
+    href: lang === 'id' && isBilingual ? '/id/portfolio' : '/portfolio',
+    label: t('nav.portfolio'),
+  },
+  { href: '/contact', label: t('nav.contact') },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="navbar">
+  <div class="container navbar-inner">
+    <a href="/" class="brand">MRAI</a>
+
+    <nav class="nav-links">
+      {links.map(link => (
+        <a
+          href={link.href}
+          class={currentPath === link.href || currentPath.startsWith(link.href + '/') ? 'nav-link active' : 'nav-link'}
+        >
+          {link.label}
+        </a>
+      ))}
+
+      {isBilingual && <LanguageSwitcher />}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .navbar {
+    background: var(--color-primary, #5540af);
+    color: white;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .navbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .brand {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+  }
+  .brand:hover { color: var(--color-yellow, #ffd646); }
+  .nav-links {
+    display: flex;
+    gap: 1.75rem;
+    align-items: center;
+  }
+  .nav-link {
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 0.5px;
+  }
+  .nav-link:hover,
+  .nav-link.active { color: var(--color-yellow, #ffd646); }
+
+  @media (max-width: 768px) {
+    .navbar-inner { flex-direction: column; gap: 1rem; }
+    .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  }
+</style>

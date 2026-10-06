@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../ProjectCard.astro';
+import { useTranslations, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const projects = (await getCollection('projects'))
+  .filter(p => !p.data.draft && p.id.startsWith(`${lang}/`))
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title={t('portfolio.title')}
+  description={t('portfolio.subtitle')}
+  lang={lang}
+>
+  <div class="container">
+    <header class="page-header">
+      <h1>{t('portfolio.title')}</h1>
+      <p>{t('portfolio.subtitle')}</p>
+    </header>
+
+    {projects.length === 0 ? (
+      <p class="empty">
+        {lang === 'id'
+          ? 'Belum ada proyek dalam bahasa Indonesia. Cek kembali nanti.'
+          : 'No projects yet. Check back soon.'}
+      </p>
+    ) : (
+      <div class="project-grid">
+        {projects.map(project => {
+          const slug = project.id.replace(/^(en|id)\//, '');
+          return (
+            <ProjectCard
+              slug={slug}
+              lang={lang}
+              title={project.data.title}
+              description={project.data.description}
+              category={project.data.category}
+              techStack={project.data.techStack}
+              cover={project.data.cover}
+              completedAt={project.data.completedAt}
+            />
+          );
+        })}
+      </div>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    text-align: center;
+    padding: 2rem 0 3rem;
+  }
+  .page-header h1 { font-size: 3rem; }
+  .page-header p {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+  }
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+  .empty {
+    text-align: center;
+    color: var(--color-text-muted);
+    padding: 3rem;
+  }
+</style>

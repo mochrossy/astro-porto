@@ -1,0 +1,93 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects
+    .filter(project => project.id.startsWith('id/'))
+    .map(project => ({
+      params: { slug: project.id.replace(/^id\//, '') },
+      props: { project },
+    }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+const formattedDate = project.data.completedAt?.toLocaleDateString('id-ID', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<BaseLayout title={project.data.title} description={project.data.description} lang="id">
+  <div class="container">
+    <article class="project-article">
+      <header class="project-header">
+        <a href="/id/portfolio" class="back-link">← Kembali ke Portofolio</a>
+
+        <span class="project-category">{project.data.category}</span>
+        <h1>{project.data.title}</h1>
+        <p class="project-description">{project.data.description}</p>
+
+        <div class="project-info">
+          {project.data.client && (
+            <div class="info-item">
+              <span class="info-label">Klien</span>
+              <span class="info-value">{project.data.client}</span>
+            </div>
+          )}
+          {project.data.duration && (
+            <div class="info-item">
+              <span class="info-label">Durasi</span>
+              <span class="info-value">{project.data.duration}</span>
+            </div>
+          )}
+          {formattedDate && (
+            <div class="info-item">
+              <span class="info-label">Selesai</span>
+              <span class="info-value">{formattedDate}</span>
+            </div>
+          )}
+        </div>
+
+        {project.data.techStack.length > 0 && (
+          <div class="project-tech">
+            {project.data.techStack.map(tech => (
+              <span class="tech-tag">{tech}</span>
+            ))}
+          </div>
+        )}
+
+        {(project.data.projectUrl || project.data.githubUrl) && (
+          <div class="project-links">
+            {project.data.projectUrl && (
+              <a href={project.data.projectUrl} target="_blank" rel="noopener" class="btn btn-primary">
+                Lihat Demo →
+              </a>
+            )}
+            {project.data.githubUrl && (
+              <a href={project.data.githubUrl} target="_blank" rel="noopener" class="btn btn-outline">
+                Source Code
+              </a>
+            )}
+          </div>
+        )}
+      </header>
+
+      <div class="project-content">
+        <Content />
+      </div>
+
+      <footer class="project-footer">
+        <a href="/id/portfolio" class="btn btn-outline">← Kembali ke Portofolio</a>
+      </footer>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Salin CSS dari versi EN — sama persis */
+</style>

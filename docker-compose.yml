@@ -1,0 +1,15 @@
+services:
+  astro:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portofolio-astro
+    ports:
+      - "4321:4321"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    stdin_open: true
+    tty: true

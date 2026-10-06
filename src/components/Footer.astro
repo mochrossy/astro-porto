@@ -1,0 +1,61 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <p>© {year} Moch. Rossy Avian I. All rights reserved.</p>
+
+    <div class="social">
+      <a href="https://github.com/username" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/username" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="/feed.xml">RSS</a>
+      <a href="/rss.xml">RSS</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-primary);
+    color: white;
+    padding: 1.5rem 0;
+    margin-top: 4rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer p {
+    margin: 0;
+    font-size: 0.875rem;
+  }
+
+  .social {
+    display: flex;
+    gap: 1.5rem;
+    
+  }
+
+  .social a {
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .social a:hover {
+    color: var(--color-yellow);
+  }
+
+  @media (max-width: 640px) {
+    .footer-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

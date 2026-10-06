@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "blog": "Blog",
+    "portfolio": "Portofolio",
+    "contact": "Kontak"
+  },
+  "hero": {
+    "badge": "System Administrator & DevOps",
+    "greeting": "Halo, saya",
+    "subtitle": "Senior IT Consultant dengan pengalaman 19+ tahun di infrastruktur IT, database engineering, dan manajemen proyek enterprise.",
+    "cta_portfolio": "Lihat Portofolio",
+    "cta_contact": "Hubungi Saya"
+  },
+  "about": {
+    "title": "Siapa Saya?",
+    "read_more": "Selengkapnya tentang saya"
+  },
+  "services": {
+    "title": "Yang Saya Kuasai",
+    "subtitle": "Layanan yang saya tawarkan"
+  },
+  "portfolio": {
+    "title": "Portofolio",
+    "subtitle": "Beberapa proyek yang telah saya kerjakan",
+    "view_all": "Lihat Semua Portofolio"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Catatan, tutorial, dan pengalaman",
+    "view_all": "Lihat Semua Artikel",
+    "back": "Kembali ke Blog",
+    "read_more": "Baca Selengkapnya",
+    "by": "Oleh",
+    "empty": "Belum ada artikel."
+  },
+  "contact": {
+    "title": "Kontak",
+    "subtitle": "Punya pertanyaan, ide proyek, atau ingin berkolaborasi?",
+    "name": "Nama",
+    "email": "Email",
+    "message": "Pesan",
+    "send": "Kirim Pesan",
+    "sending": "Mengirim...",
+    "success": "Pesan berhasil dikirim!",
+    "error": "Gagal mengirim pesan. Silakan coba lagi."
+  },
+  "footer": {
+    "rights": "Hak cipta dilindungi."
+  },
+  "language": {
+    "switch": "Ganti Bahasa",
+    "id": "Indonesia",
+    "en": "English"
+  }
+}
