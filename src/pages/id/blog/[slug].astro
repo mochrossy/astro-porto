@@ -1,13 +1,13 @@
 ---
-import { getCollection, render } from 'astro:content';
-import BlogLayout from '../../../layouts/BlogLayout.astro';
+import { getCollection, render } from "astro:content";
+import BlogLayout from "../../../layouts/BlogLayout.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection("blog");
   return posts
-    .filter(post => post.id.startsWith('id/'))         // ← FILTER ID
-    .map(post => ({
-      params: { slug: post.id.replace(/^id\//, '') },   // ← buang prefix id/
+    .filter((post) => post.id.startsWith("id/")) // ← FILTER ID
+    .map((post) => ({
+      params: { slug: post.id.replace(/^id\//, "") }, // ← buang prefix id/
       props: { post },
     }));
 }
