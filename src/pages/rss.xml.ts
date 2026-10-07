@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 
 export const GET: APIRoute = async ({ site }) => {
   const siteUrl = site?.toString().replace(/\/$/, '') || '';
-  const siteName = 'Portofolio Rossy';
+  const siteName = 'Portfolio Rossy';
   const siteDescription = 'Notes, tutorials, and experiences on IT and web development.';
 
   // Ambil artikel hanya dari folder en/

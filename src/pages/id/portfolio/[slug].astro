@@ -1,13 +1,13 @@
 ---
-import { getCollection, render } from 'astro:content';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
+  const projects = await getCollection("projects");
   return projects
-    .filter(project => project.id.startsWith('id/'))
-    .map(project => ({
-      params: { slug: project.id.replace(/^id\//, '') },
+    .filter((project) => project.id.startsWith("id/"))
+    .map((project) => ({
+      params: { slug: project.id.replace(/^id\//, "") },
       props: { project },
     }));
 }
@@ -15,14 +15,18 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { Content } = await render(project);
 
-const formattedDate = project.data.completedAt?.toLocaleDateString('id-ID', {
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric',
+const formattedDate = project.data.completedAt?.toLocaleDateString("id-ID", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
 });
 ---
 
-<BaseLayout title={project.data.title} description={project.data.description} lang="id">
+<BaseLayout
+  title={project.data.title}
+  description={project.data.description}
+  lang="id"
+>
   <div class="container">
     <article class="project-article">
       <header class="project-header">
@@ -33,48 +37,69 @@ const formattedDate = project.data.completedAt?.toLocaleDateString('id-ID', {
         <p class="project-description">{project.data.description}</p>
 
         <div class="project-info">
-          {project.data.client && (
-            <div class="info-item">
-              <span class="info-label">Klien</span>
-              <span class="info-value">{project.data.client}</span>
-            </div>
-          )}
-          {project.data.duration && (
-            <div class="info-item">
-              <span class="info-label">Durasi</span>
-              <span class="info-value">{project.data.duration}</span>
-            </div>
-          )}
-          {formattedDate && (
-            <div class="info-item">
-              <span class="info-label">Selesai</span>
-              <span class="info-value">{formattedDate}</span>
-            </div>
-          )}
+          {
+            project.data.client && (
+              <div class="info-item">
+                <span class="info-label">Klien</span>
+                <span class="info-value">{project.data.client}</span>
+              </div>
+            )
+          }
+          {
+            project.data.duration && (
+              <div class="info-item">
+                <span class="info-label">Durasi</span>
+                <span class="info-value">{project.data.duration}</span>
+              </div>
+            )
+          }
+          {
+            formattedDate && (
+              <div class="info-item">
+                <span class="info-label">Selesai</span>
+                <span class="info-value">{formattedDate}</span>
+              </div>
+            )
+          }
         </div>
 
-        {project.data.techStack.length > 0 && (
-          <div class="project-tech">
-            {project.data.techStack.map(tech => (
-              <span class="tech-tag">{tech}</span>
-            ))}
-          </div>
-        )}
+        {
+          project.data.techStack.length > 0 && (
+            <div class="project-tech">
+              <span class="tech-label">Teknologi:</span>
+              {project.data.techStack.map((tech) => (
+                <span class="tech-tag">{tech}</span>
+              ))}
+            </div>
+          )
+        }
 
-        {(project.data.projectUrl || project.data.githubUrl) && (
-          <div class="project-links">
-            {project.data.projectUrl && (
-              <a href={project.data.projectUrl} target="_blank" rel="noopener" class="btn btn-primary">
-                Lihat Demo →
-              </a>
-            )}
-            {project.data.githubUrl && (
-              <a href={project.data.githubUrl} target="_blank" rel="noopener" class="btn btn-outline">
-                Source Code
-              </a>
-            )}
-          </div>
-        )}
+        {
+          (project.data.projectUrl || project.data.githubUrl) && (
+            <div class="project-links">
+              {project.data.projectUrl && (
+                <a
+                  href={project.data.projectUrl}
+                  target="_blank"
+                  rel="noopener"
+                  class="btn btn-primary"
+                >
+                  Lihat Demo →
+                </a>
+              )}
+              {project.data.githubUrl && (
+                <a
+                  href={project.data.githubUrl}
+                  target="_blank"
+                  rel="noopener"
+                  class="btn btn-outline"
+                >
+                  Source Code
+                </a>
+              )}
+            </div>
+          )
+        }
       </header>
 
       <div class="project-content">
@@ -82,12 +107,237 @@ const formattedDate = project.data.completedAt?.toLocaleDateString('id-ID', {
       </div>
 
       <footer class="project-footer">
-        <a href="/id/portfolio" class="btn btn-outline">← Kembali ke Portofolio</a>
+        <a href="/id/portfolio" class="btn btn-outline"
+          >← Kembali ke Portofolio</a
+        >
       </footer>
     </article>
   </div>
 </BaseLayout>
 
 <style>
-  /* Salin CSS dari versi EN — sama persis */
+  .project-article {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+  }
+  .back-link:hover {
+    color: var(--color-primary);
+  }
+
+  .project-category {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-yellow);
+    background: var(--color-primary);
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+
+  .project-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .project-description {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  /* ============ INFO GRID ============ */
+  .project-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--color-bg-alt);
+    border-radius: 12px;
+    margin-bottom: 2rem;
+  }
+
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .info-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: var(--color-text-muted);
+  }
+
+  .info-value {
+    font-size: 1.05rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  /* ============ TECH STACK ============ */
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+  }
+
+  .tech-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 0.25rem;
+  }
+
+  .tech-tag {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    background: var(--color-bg-alt);
+    padding: 0.4rem 0.9rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+  }
+
+  /* ============ LINKS ============ */
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  /* ============ CONTENT ============ */
+  .project-content {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+    margin-bottom: 3rem;
+  }
+
+  .project-content :global(h2) {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    color: var(--color-primary);
+  }
+
+  .project-content :global(h3) {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.35rem;
+  }
+
+  .project-content :global(p) {
+    margin-bottom: 1.25rem;
+  }
+
+  .project-content :global(ul),
+  .project-content :global(ol) {
+    margin-left: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .project-content :global(code) {
+    background: var(--color-bg-alt);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Consolas", monospace;
+    font-size: 0.95em;
+    color: #be185d;
+  }
+
+  .project-content :global(pre) {
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 1.25rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-content :global(pre code) {
+    background: none;
+    color: inherit;
+    padding: 0;
+  }
+
+  .project-content :global(blockquote) {
+    border-left: 4px solid var(--color-yellow);
+    background: var(--color-bg-alt);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+  }
+
+  /* ============ FOOTER ============ */
+  .project-footer {
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  /* ============ BUTTONS ============ */
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+  }
+  .btn-primary:hover {
+    background: var(--color-primary-dark);
+    color: white;
+  }
+
+  .btn-outline {
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+  }
+  .btn-outline:hover {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  @media (max-width: 640px) {
+    .project-header h1 {
+      font-size: 1.75rem;
+    }
+    .project-info {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
 </style>

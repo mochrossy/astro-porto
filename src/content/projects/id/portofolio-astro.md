@@ -5,7 +5,7 @@ techStack: ["Astro", "Markdown", "Docker", "Cloudflare Pages"]
 category: "Web"
 duration: "2 minggu"
 completedAt: 2026-10-05
-githubUrl: "https://github.com/username/portofolio-astro"
+githubUrl: "https://github.com/mochrossy/astro-porto"
 featured: true
 order: 2
 ---

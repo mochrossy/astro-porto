@@ -1,8 +1,8 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 // Ganti dengan Access Key Anda dari web3forms.com
-const WEB3FORMS_KEY = 'c4e25e37-4b8d-48d5-9c37-58f6484c4024';
+const WEB3FORMS_KEY = "c4e25e37-4b8d-48d5-9c37-58f6484c4024";
 ---
 
 <BaseLayout
@@ -12,7 +12,9 @@ const WEB3FORMS_KEY = 'c4e25e37-4b8d-48d5-9c37-58f6484c4024';
   <div class="container">
     <header class="page-header">
       <h1>Contact</h1>
-      <p>Have a question, project idea, or want to collaborate? Send a message.</p>
+      <p>
+        Have a question, project idea, or want to collaborate? Send a message.
+      </p>
     </header>
 
     <div class="contact-wrapper">
@@ -24,7 +26,11 @@ const WEB3FORMS_KEY = 'c4e25e37-4b8d-48d5-9c37-58f6484c4024';
         id="contact-form"
       >
         <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
-        <input type="hidden" name="subject" value="New Message from Portfolio Website" />
+        <input
+          type="hidden"
+          name="subject"
+          value="New Message from Portfolio Website"
+        />
         <input type="hidden" name="from_name" value="Portfolio Rossy" />
 
         <!-- Honeypot -->
@@ -59,8 +65,7 @@ const WEB3FORMS_KEY = 'c4e25e37-4b8d-48d5-9c37-58f6484c4024';
             name="message"
             rows="6"
             required
-            placeholder="Write your message here..."
-          ></textarea>
+            placeholder="Write your message here..."></textarea>
         </div>
 
         <button type="submit" class="btn-submit" id="submit-btn">
@@ -78,7 +83,7 @@ const WEB3FORMS_KEY = 'c4e25e37-4b8d-48d5-9c37-58f6484c4024';
           <div class="info-icon">📧</div>
           <div>
             <span class="info-label">Email</span>
-            <span class="info-value">email@domain.com</span>
+            <span class="info-value">rossyfumi@gmail.com</span>
           </div>
         </div>
 
@@ -86,7 +91,7 @@ const WEB3FORMS_KEY = 'c4e25e37-4b8d-48d5-9c37-58f6484c4024';
           <div class="info-icon">📱</div>
           <div>
             <span class="info-label">Phone</span>
-            <span class="info-value">+62 812 3456 7890</span>
+            <span class="info-value">+62 851 1982 0559</span>
           </div>
         </div>
 
@@ -99,8 +104,14 @@ const WEB3FORMS_KEY = 'c4e25e37-4b8d-48d5-9c37-58f6484c4024';
         </div>
 
         <div class="social-links">
-          <a href="https://github.com/username" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://linkedin.com/in/username" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/mochrossy" target="_blank" rel="noopener"
+            >GitHub</a
+          >
+          <a
+            href="https://www.linkedin.com/in/mochammad-rossy-avian-ishak-b684b721/"
+            target="_blank"
+            rel="noopener">LinkedIn</a
+          >
         </div>
       </aside>
     </div>
@@ -108,42 +119,43 @@ const WEB3FORMS_KEY = 'c4e25e37-4b8d-48d5-9c37-58f6484c4024';
 </BaseLayout>
 
 <script>
-  const form = document.getElementById('contact-form') as HTMLFormElement;
-  const resultDiv = document.getElementById('form-result') as HTMLDivElement;
-  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const resultDiv = document.getElementById("form-result") as HTMLDivElement;
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
 
-  form?.addEventListener('submit', async (e) => {
+  form?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
-    resultDiv.className = 'form-result';
-    resultDiv.textContent = '';
+    submitBtn.textContent = "Sending...";
+    resultDiv.className = "form-result";
+    resultDiv.textContent = "";
 
     const formData = new FormData(form);
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
         body: formData,
       });
 
       const data = await response.json();
 
       if (data.success) {
-        resultDiv.className = 'form-result success';
-        resultDiv.textContent = '✓ Message sent successfully! I will reply as soon as possible.';
+        resultDiv.className = "form-result success";
+        resultDiv.textContent =
+          "✓ Message sent successfully! I will reply as soon as possible.";
         form.reset();
       } else {
-        resultDiv.className = 'form-result error';
-        resultDiv.textContent = '✗ Failed to send message. Please try again.';
+        resultDiv.className = "form-result error";
+        resultDiv.textContent = "✗ Failed to send message. Please try again.";
       }
     } catch (error) {
-      resultDiv.className = 'form-result error';
-      resultDiv.textContent = '✗ An error occurred. Please try again.';
+      resultDiv.className = "form-result error";
+      resultDiv.textContent = "✗ An error occurred. Please try again.";
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Message';
+      submitBtn.textContent = "Send Message";
     }
   });
 </script>
@@ -153,7 +165,9 @@ const WEB3FORMS_KEY = 'c4e25e37-4b8d-48d5-9c37-58f6484c4024';
     text-align: center;
     padding: 2rem 0 3rem;
   }
-  .page-header h1 { font-size: 3rem; }
+  .page-header h1 {
+    font-size: 3rem;
+  }
   .page-header p {
     font-size: 1.1rem;
     color: var(--color-text-muted);
@@ -181,7 +195,9 @@ const WEB3FORMS_KEY = 'c4e25e37-4b8d-48d5-9c37-58f6484c4024';
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   }
 
-  .form-group { margin-bottom: 1.5rem; }
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
 
   .form-group label {
     display: block;
@@ -279,7 +295,10 @@ const WEB3FORMS_KEY = 'c4e25e37-4b8d-48d5-9c37-58f6484c4024';
     margin-bottom: 1.5rem;
   }
 
-  .info-icon { font-size: 1.5rem; line-height: 1; }
+  .info-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
 
   .info-label {
     display: block;
@@ -311,6 +330,8 @@ const WEB3FORMS_KEY = 'c4e25e37-4b8d-48d5-9c37-58f6484c4024';
   }
 
   @media (max-width: 640px) {
-    .page-header h1 { font-size: 2rem; }
+    .page-header h1 {
+      font-size: 2rem;
+    }
   }
 </style>

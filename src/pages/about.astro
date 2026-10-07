@@ -1,33 +1,251 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const skills = [
-  { name: 'Linux Server', level: 90, category: 'DevOps' },
-  { name: 'Laravel / PHP', level: 85, category: 'Backend' },
-  { name: 'Docker', level: 80, category: 'DevOps' },
-  { name: 'MySQL / MariaDB', level: 85, category: 'Database' },
-  { name: 'Tailwind CSS', level: 75, category: 'Frontend' },
-  { name: 'Astro', level: 70, category: 'Frontend' },
+  { name: "Linux Server", level: 90, category: "DevOps" },
+  { name: "Laravel / PHP", level: 85, category: "Backend" },
+  { name: "Docker", level: 80, category: "DevOps" },
+  { name: "MySQL / MariaDB", level: 85, category: "Database" },
+  { name: "Tailwind CSS", level: 75, category: "Frontend" },
+  { name: "Astro", level: 70, category: "Frontend" },
 ];
 
 const experiences = [
   {
-    period: '2019 - Present',
-    role: 'Senior IT Consultant & DevOps Project Leader',
-    company: 'PT Example Company',
-    description: 'Leading infrastructure teams for enterprise clients in banking, mining, and telecommunications sectors. Focus on containerization (Docker), database migration, and reverse proxy optimization.',
+    period: "2019 - Present",
+    role: "Senior IT Consultant & DevOps Project Leader",
+    company: "PT Example Company",
+    location: "Jakarta, Indonesia",
+    type: "remote / project-based",
+    description:
+      "Leading infrastructure teams for enterprise clients in banking, mining, and telecommunications sectors.",
+    techStack: ["Docker", "MariaDB", "Nginx", "Linux", "ITSM", "DRP/BCP"],
+    achievements: [
+      "Led nationwide infrastructure rollout for financial institutions",
+      "Architected resilient system solutions for 99.9% uptime",
+      "Managed cross-functional teams across 3 industries",
+    ],
   },
   {
-    period: '2014 - 2019',
-    role: 'System Administrator',
-    company: 'PT Example Second',
-    description: 'Managed Linux servers for production applications, mail server configuration, and centralized monitoring implementation.',
+    period: "01/2023 - 12/2024",
+    role: "DevOps Engineer",
+    company: "PT Borneo Indobara",
+    location: "South Kalimantan, Indonesia",
+    type: "remote / project-based",
+    description:
+      "Improved Fleet Management System (FMS) performance and database reliability for one of Indonesia's largest coal mining operations.",
+    techStack: [
+      "Docker",
+      "MS SQL",
+      "MariaDB",
+      "Reverse Proxy",
+      "Linux",
+      "Ubuntu",
+      "bash",
+      "ActiveMQ",
+    ],
+    achievements: [
+      "Migrated MS SQL to MariaDB with zero data loss",
+      "Optimized container resources, reducing server costs and time taken",
+      "Installed and configured reverse proxy for production workloads",
+    ],
   },
   {
-    period: '2008 - 2014',
-    role: 'IT Support & Network Engineer',
-    company: 'PT Example Third',
-    description: 'Handled network troubleshooting, router and switch configuration, and technical support for internal users.',
+    period: "07/2020 - 12/2022",
+    role: "Project Manager (ITSM)",
+    company: "CIMB Niaga Bank",
+    location: "Jakarta, Indonesia",
+    type: "Full-time",
+    description:
+      "Coordinated User Windows upgrade and installation for approximately 3,000 banking users across Jabodetabek. Managed internal applications, delivery timelines, resources, and technical issue resolution.",
+    techStack: [
+      "Windows 365",
+      "Active Directory",
+      "AS/400",
+      "Microsoft Endpoint Manager",
+      "Manage Engine",
+      "PowerShell",
+      "Agile",
+      "Waterfall",
+    ],
+    achievements: [
+      "Modernized internal enterprise applications to expand functionality, system stability, and user experience for banking personnel",
+      "Spearheaded nationwide IT infrastructure rollout, managing Windows 10 upgrades and installations for over 3,000 users across the Greater Jakarta area.",
+      "Oversee full project lifecycles, resource allocation, and risk mitigation strategies to ensure on-time delivery across banking division",
+    ],
+  },
+  {
+    period: "01/2019 - 06/2020",
+    role: "IT Service Delivery Manager",
+    company: "PT Azatra Persada Teknologi",
+    location: "Jakarta, Indonesia",
+    type: "Full-time",
+    description:
+      "Managed nationwide IT service operations, including helpdesk and support engineers. Handled incident and problem management, ITSM alignment, Disaster Recovery Planning, and Business Continuity Planning.",
+    techStack: [
+      ,
+      "Active Directory",
+      "DRP",
+      "BCP",
+      "AS/400",
+      "Agile",
+      "Waterfall",
+    ],
+    achievements: [
+      "Directed nationwide IT Service Delivery (SDE) operations, assuring consistent service availability and system uptime across all corporate branche",
+      "Managed and standardized endpoint device administration using Microsoft Endpoint Manager (MDE), improving asset visibility and patch compliance company-wide",
+      "Oversee full project lifecycles, resource allocation, and risk mitigation strategies to ensure on-time delivery across banking division",
+      "Partnered with stakeholders to establish robust Disaster Recovery Planning (DRP) and Business Continuity Planning (BCP) frameworks to ensure maximum system resilience",
+    ],
+  },
+  {
+    period: "06/2016 - 12/2018",
+    role: "Project Manager (ITSM)",
+    company: "Danamon Bank",
+    location: "Jakarta, Indonesia",
+    type: "Full-time",
+    description:
+      "Managed nationwide IT service operations, including helpdesk and support engineers. Handled incident and problem management, ITSM alignment, Disaster Recovery Planning, and Business Continuity Planning.",
+    techStack: [
+      ,
+      "Active Directory",
+      "DRP",
+      "BCP",
+      "AS/400",
+      "Agile",
+      "Waterfall",
+    ],
+    achievements: [
+      "Directed nationwide IT Service Delivery (SDE) operations, assuring consistent service availability and system uptime across all corporate branche",
+      "Managed and standardized endpoint device administration using Microsoft Endpoint Manager (MDE), improving asset visibility and patch compliance company-wide",
+      "Oversee full project lifecycles, resource allocation, and risk mitigation strategies to ensure on-time delivery across banking division",
+      "Partnered with stakeholders to establish robust Disaster Recovery Planning (DRP) and Business Continuity Planning (BCP) frameworks to ensure maximum system resilience",
+    ],
+  },
+  {
+    period: "05/2014 - 06/2016",
+    role: "Solutions Engineer",
+    company: "PT. Telekomunikasi Indonesia (Enterprise Services Division)",
+    location: "Jakarta, Indonesia",
+    type: "Full-time",
+    description:
+      "Conducted competitive analysis for tenders, led contract negotiations, developed technical proposals, and designed business solutions for enterprise clients.",
+    techStack: [, "ERP", "CRM", "HRIS", "Agile", "Waterfall"],
+    achievements: [
+      "Authored technical proposals, solution architectures, and tender specifications tailored to meet high-value enterprise client demands",
+      "Conducted competitive market analyses and led complex contract negotiations to secure strategic business wins",
+    ],
+  },
+  {
+    period: "12/2011 - 04/2014",
+    role: "System Engineer & Database Administrator",
+    company: "PT. Astra Graphia Information Technology (AGIT)",
+    location: "Jakarta, Indonesia",
+    type: "Full-time",
+    description:
+      "Managed intranet application deployments for Toyota, Daihatsu, and Honda workshop and sales branches, serving approximately 4,000 users. Maintained IIS, Windows AD/DNS, MS Cluster, Hyper-V, SQL Server, SAN storage, and backup systems.",
+    techStack: [
+      ,
+      "ERP",
+      "ASP.NET",
+      "MS SQL",
+      "Crystal Reports",
+      "hyper-V",
+      "VM-ware",
+      "SAN Storage",
+      "Backup Systems",
+      "Linux",
+      "Windows Server",
+      "Active Directory",
+      "ManageEngine",
+      "IIS",
+      "LANDesk",
+      "SCDPM",
+      "DRP",
+      "BCP",
+    ],
+    achievements: [
+      "Deployed and configured enterprise intranet applications across 4,000+ users in nationwide Toyota, Daihatsu, and Honda sales and workshop branches",
+      "Managed and troubleshot endpoint devices at scale using LANDesk and ManageEngine, standardizing system configuration and improving support response time across branches.",
+      "Architected IIS Servers with Windows NLB, Hyper-V virtualization, MS Cluster environments, and SQL Server 2008 R2 backends.",
+      "Managed SAN switch zoning, LUN storage provisioning (HP EVA H6000), and automated backup routines (SCDPM 2010).",
+      "Key Achievement: Recognized as AGIT Operation Best Team (2012)",
+    ],
+  },
+  {
+    period: "01/2011 - 12/2011",
+    role: "IT Support Engineer",
+    company: "PT. Nexwave Indonesia",
+    location: "Jakarta, Indonesia",
+    type: "Full-time",
+    description:
+      "Maintained, configured, and troubleshot enterprise network services, including Zimbra Mail Server, Proxy Servers, and MikroTik routers.",
+    techStack: [
+      ,
+      "Zimbra",
+      "MikroTik",
+      "Linux",
+      "Proxy Servers",
+      "Vlan",
+      "Cisco",
+      "Firewall",
+    ],
+  },
+  {
+    period: "11/2009 - 12/2010",
+    role: "IT Administrator",
+    company: "PT. Autditsi Utama",
+    location: "Jakarta, Indonesia",
+    type: "Full-time",
+    description:
+      "Maintained Qmail mail server, Apache web server, Mikrotik router, BIND DNS, Squid proxy, internet gateway, and Windows Server 2008. Handled user PC troubleshooting and data/network security.",
+    techStack: [
+      ,
+      "Qmail",
+      "Apache",
+      "Bind DNS",
+      "Squid Proxy",
+      "Windows Server 2008",
+      "Linux",
+      "Proxy Servers",
+      "Vlan",
+      "Cisco",
+      "Firewall",
+      "MRTG",
+    ],
+    achievements: [
+      "Administered and troubleshot core network infrastructure to maintain security and 99.9% network uptime.",
+    ],
+  },
+  {
+    period: "02/2006 - 10/2009",
+    role: "Systems & Network Migration Engineer",
+    company: "PT. Samudera Indonesia",
+    location: "Jakarta, Indonesia",
+    type: "Full-time",
+    description:
+      "Migrated DNS, mail, proxy, router, and firewall services from proprietary systems to open-source Linux environments. Worked with CentOS, Debian, Mandrake, Postfix, Exchange migration, IPCop, and PostgreSQL.",
+    techStack: [
+      "Mail Server",
+      "Postfix",
+      "Qmail",
+      "Apache",
+      "Bind DNS",
+      "Squid Proxy",
+      "Windows Server 2008",
+      "Linux",
+      "Proxy Servers",
+      "Vlan",
+      "Cisco",
+      "Firewall",
+      "IPCop",
+      "PostgreSQL",
+      "CentOS",
+      "Debian",
+    ],
+    achievements: [
+      "Administered and troubleshot core network infrastructure to maintain security and 99.9% network uptime.",
+    ],
   },
 ];
 ---
@@ -48,22 +266,30 @@ const experiences = [
       <p>
         Senior IT Consultant & DevOps Project Leader with over 19 years of
         experience in IT infrastructure, database engineering, and enterprise
-        project management. Proven track record of architecting resilient
-        system solutions and leading nationwide infrastructure rollouts for
-        major financial, mining, and telecommunications organizations.
+        project management. Proven track record of architecting resilient system
+        solutions and leading nationwide infrastructure rollouts for major
+        financial, mining, and telecommunications organizations.
       </p>
       <p>
-        Hands-on technical mastery in DevOps containerization (Docker),
-        database migrations (MS SQL to MariaDB), and reverse proxy optimization,
-        combined with strong strategic leadership in ITSM, DRP/BCP, and
-        cross-functional team management. Currently expanding into fullstack
-        web development with Laravel, Astro, and Tailwind CSS.
+        Hands-on technical mastery in DevOps containerization (Docker), database
+        migrations (MS SQL to MariaDB), and reverse proxy optimization, combined
+        with strong strategic leadership in ITSM, DRP/BCP, and cross-functional
+        team management. Currently expanding into fullstack web development with
+        Laravel, Astro, and Tailwind CSS.
       </p>
-
+      <p>
+        I specialize in building and maintaining reliable business applications,
+        mail servers, network infrastructure, and IT service operations. My
+        background combines hands-on technical work — Linux, Windows, PHP, SQL,
+        Docker, and database administration — with project management, incident
+        management, and stakeholder coordination. I enjoy solving operational
+        problems, improving system performance, and documenting processes
+        clearly for teams and handovers.
+      </p>
       <div class="contact-info">
         <div class="info-item">
           <span class="info-label">Email</span>
-          <span class="info-value">email@domain.com</span>
+          <span class="info-value">rossyfumi@gmail.com</span>
         </div>
         <div class="info-item">
           <span class="info-label">Location</span>
@@ -80,18 +306,20 @@ const experiences = [
     <section class="skills-section">
       <h2>Skills</h2>
       <div class="skills-grid">
-        {skills.map(skill => (
-          <div class="skill-item">
-            <div class="skill-header">
-              <span class="skill-name">{skill.name}</span>
-              <span class="skill-level">{skill.level}%</span>
+        {
+          skills.map((skill) => (
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">{skill.name}</span>
+                <span class="skill-level">{skill.level}%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style={`width: ${skill.level}%`} />
+              </div>
+              <span class="skill-category">{skill.category}</span>
             </div>
-            <div class="skill-bar">
-              <div class="skill-bar-fill" style={`width: ${skill.level}%`}></div>
-            </div>
-            <span class="skill-category">{skill.category}</span>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </section>
 
@@ -99,17 +327,45 @@ const experiences = [
     <section class="experience-section">
       <h2>Work Experience</h2>
       <div class="timeline">
-        {experiences.map(exp => (
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <span class="timeline-period">{exp.period}</span>
-              <h3>{exp.role}</h3>
-              <span class="timeline-company">{exp.company}</span>
-              <p>{exp.description}</p>
+        {
+          experiences.map((exp) => (
+            <div class="timeline-item">
+              <div class="timeline-dot" />
+              <div class="timeline-content">
+                <div class="timeline-header">
+                  <span class="timeline-period">{exp.period}</span>
+                  <span class="timeline-type">{exp.type}</span>
+                </div>
+
+                <h3>{exp.role}</h3>
+                <div class="timeline-meta">
+                  <span class="timeline-company">
+                    <strong>{exp.company}</strong>
+                  </span>
+                  <span class="timeline-location">📍 {exp.location}</span>
+                </div>
+
+                <p class="timeline-description">{exp.description}</p>
+
+                {exp.achievements && exp.achievements.length > 0 && (
+                  <ul class="timeline-achievements">
+                    {exp.achievements.map((ach) => (
+                      <li>{ach}</li>
+                    ))}
+                  </ul>
+                )}
+
+                {exp.techStack && exp.techStack.length > 0 && (
+                  <div class="timeline-tech">
+                    {exp.techStack.map((tech) => (
+                      <span class="tech-pill">{tech}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </section>
   </div>
@@ -120,14 +376,22 @@ const experiences = [
     text-align: center;
     padding: 2rem 0 3rem;
   }
-  .page-header h1 { font-size: 3rem; }
+  .page-header h1 {
+    font-size: 3rem;
+  }
   .page-header p {
     font-size: 1.1rem;
     color: var(--color-text-muted);
   }
 
-  .bio { max-width: 800px; margin: 0 auto 4rem; }
-  .bio h2 { font-size: 1.75rem; margin-bottom: 1rem; }
+  .bio {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+  }
+  .bio h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
   .bio p {
     font-size: 1.05rem;
     line-height: 1.8;
@@ -143,7 +407,10 @@ const experiences = [
     border-radius: 12px;
     margin-top: 2rem;
   }
-  .info-item { display: flex; flex-direction: column; }
+  .info-item {
+    display: flex;
+    flex-direction: column;
+  }
   .info-label {
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -157,7 +424,10 @@ const experiences = [
     color: var(--color-primary);
   }
 
-  .skills-section { max-width: 800px; margin: 0 auto 4rem; }
+  .skills-section {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+  }
   .skills-section h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
@@ -180,8 +450,14 @@ const experiences = [
     align-items: center;
     margin-bottom: 0.75rem;
   }
-  .skill-name { font-weight: 600; color: var(--color-text); }
-  .skill-level { font-weight: 700; color: var(--color-primary); }
+  .skill-name {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  .skill-level {
+    font-weight: 700;
+    color: var(--color-primary);
+  }
   .skill-bar {
     height: 8px;
     background: var(--color-bg-alt);
@@ -202,7 +478,10 @@ const experiences = [
     font-weight: 600;
   }
 
-  .experience-section { max-width: 800px; margin: 0 auto; }
+  .experience-section {
+    max-width: 800px;
+    margin: 0 auto;
+  }
   .experience-section h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
@@ -213,7 +492,7 @@ const experiences = [
     padding-left: 2rem;
   }
   .timeline::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0.5rem;
     top: 0;
@@ -225,7 +504,9 @@ const experiences = [
     position: relative;
     padding-bottom: 2rem;
   }
-  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-item:last-child {
+    padding-bottom: 0;
+  }
   .timeline-dot {
     position: absolute;
     left: -1.625rem;
@@ -239,42 +520,121 @@ const experiences = [
   }
   .timeline-content {
     background: white;
-    padding: 1.25rem 1.5rem;
+    padding: 1.5rem;
     border-radius: 12px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
   .timeline-period {
     font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
     color: var(--color-yellow);
     background: var(--color-primary);
-    padding: 0.2rem 0.7rem;
+    padding: 0.25rem 0.8rem;
     border-radius: 999px;
-    display: inline-block;
-    margin-bottom: 0.75rem;
   }
+
+  .timeline-type {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    padding: 0.25rem 0.6rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+  }
+
   .timeline-content h3 {
-    font-size: 1.15rem;
-    margin-bottom: 0.25rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
   }
-  .timeline-company {
+
+  .timeline-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
     font-size: 0.9rem;
     color: var(--color-text-muted);
-    font-weight: 600;
-    display: block;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
   }
-  .timeline-content p {
+
+  .timeline-company strong {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .timeline-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .timeline-description {
     font-size: 0.95rem;
     line-height: 1.7;
     color: var(--color-text);
-    margin: 0;
+    margin-bottom: 1rem;
   }
 
+  .timeline-achievements {
+    margin: 0 0 1rem 1.25rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .timeline-achievements li {
+    position: relative;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: 0.4rem;
+    padding-left: 1rem;
+  }
+
+  .timeline-achievements li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--color-yellow);
+    font-weight: 700;
+  }
+
+  .timeline-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .tech-pill {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    background: var(--color-bg-alt);
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+  }
   @media (max-width: 640px) {
-    .page-header h1 { font-size: 2rem; }
+    .page-header h1 {
+      font-size: 2rem;
+    }
     .skills-section h2,
-    .experience-section h2 { font-size: 1.5rem; }
+    .experience-section h2 {
+      font-size: 1.5rem;
+    }
   }
 </style>

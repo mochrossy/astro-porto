@@ -1,48 +1,101 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ProjectCard from '../ProjectCard.astro';
-import PostCard from '../PostCard.astro';
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../ProjectCard.astro";
+import PostCard from "../PostCard.astro";
 
 // Projects (EN only, featured)
-const projects = (await getCollection('projects'))
-  .filter(p => !p.data.draft && p.data.featured && p.id.startsWith('en/'))
+const projects = (await getCollection("projects"))
+  .filter((p) => !p.data.draft && p.data.featured && p.id.startsWith("en/"))
   .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 4);
 
 // Posts (EN only)
-const posts = (await getCollection('blog'))
-  .filter(p => !p.data.draft && p.id.startsWith('en/'))
+const posts = (await getCollection("blog"))
+  .filter((p) => !p.data.draft && p.id.startsWith("en/"))
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
   .slice(0, 3);
 
-const projectsCount = (await getCollection('projects')).filter(p => !p.data.draft).length;
-const postsCount = (await getCollection('blog')).filter(p => !p.data.draft && p.id.startsWith('en/')).length;
+const projectsCount = (await getCollection("projects")).filter(
+  (p) => !p.data.draft,
+).length;
+const postsCount = (await getCollection("blog")).filter(
+  (p) => !p.data.draft && p.id.startsWith("en/"),
+).length;
 
 // Skills
 const skills = [
-  { name: 'Linux', level: 99 },
-  { name: 'Windows Server', level: 90 },
-  { name: 'Python', level: 40 },
+  { name: "Linux", level: 90 },
+  { name: "Windows Server", level: 90 },
+  { name: "AI / Machine Learning", level: 60 },
+  { name: "Python", level: 60 },
 ];
 
 // Services
 const services = [
-  { icon: '🖥️', title: 'Server Administration', description: 'Configuration and maintenance of Linux servers for production.' },
-  { icon: '🐳', title: 'DevOps & Containerization', description: 'Docker implementation, CI/CD, and deployment automation.' },
-  { icon: '🌐', title: 'Web Development', description: 'Web application development with Laravel, Astro, and Tailwind CSS.' },
-  { icon: '🗄️', title: 'Database Engineering', description: 'Design, migration, and optimization of MySQL/MariaDB databases.' },
-  { icon: '📧', title: 'Mail Server', description: 'Zimbra, Postfix implementation and DNS configuration for email.' },
-  { icon: '🛡️', title: 'IT Consulting', description: 'Infrastructure consulting, security, and system planning.' },
+  {
+    icon: "🖥️",
+    title: "Server Administration",
+    description:
+      "Configuration and maintenance of Linux servers for production.",
+  },
+  {
+    icon: "🐳",
+    title: "DevOps & Containerization",
+    description: "Docker implementation, CI/CD, and deployment automation.",
+  },
+  {
+    icon: "🌐",
+    title: "Web Development",
+    description:
+      "Web application development with Laravel, Astro, and Tailwind CSS.",
+  },
+  {
+    icon: "🗄️",
+    title: "Database Engineering",
+    description:
+      "Design, migration, and optimization of MySQL/MariaDB databases.",
+  },
+  {
+    icon: "📧",
+    title: "Mail Server",
+    description:
+      "Zimbra, Postfix implementation and DNS configuration for email.",
+  },
+  {
+    icon: "🛡️",
+    title: "IT Consulting",
+    description: "Infrastructure consulting, security, and system planning.",
+  },
 ];
 
 // Clients — hardcoded; edit di sini kalau mau tambah/hapus
 const clients = [
-  { name: 'Agit', logo: '/images/clients/agit.png', url: 'https://www.ag-it.com/' },
-  { name: 'Pemda Bekasi Kabupaten', logo: '/images/clients/pemdakabbes.png', url: 'https://www.bekasikab.go.id/' },
-  { name: 'Tunas Samudera Kurnia', logo: '/images/clients/tsk.png', url: 'https://www.tsklogistics.com/' },
-  { name: 'Bank CIMB Niaga', logo: '/images/clients/cimb.png', url: 'https://www.cimbniaga.co.id/id/home/welcome' },
-  { name: 'Astra International', logo: '/images/clients/astra.png', url: 'https://www.astra.co.id/' },
+  {
+    name: "Agit",
+    logo: "/images/clients/agit.png",
+    url: "https://www.ag-it.com/",
+  },
+  {
+    name: "Pemda Bekasi Kabupaten",
+    logo: "/images/clients/pemdakabbes.png",
+    url: "https://www.bekasikab.go.id/",
+  },
+  {
+    name: "Tunas Samudera Kurnia",
+    logo: "/images/clients/tsk.png",
+    url: "https://www.tsklogistics.com/",
+  },
+  {
+    name: "Bank CIMB Niaga",
+    logo: "/images/clients/cimb.png",
+    url: "https://www.cimbniaga.co.id/id/home/welcome",
+  },
+  {
+    name: "Astra International",
+    logo: "/images/clients/astra.png",
+    url: "https://www.astra.co.id/",
+  },
 ];
 ---
 
@@ -58,13 +111,28 @@ const clients = [
           <img src="/images/profile.jpg" alt="Moch. Rossy Avian I." />
         </div>
         <div class="hero-text">
-          <h1>Hello, I'm <span class="highlight">M. Rossy Avian</span>!</h1>
+          <h1>Hello, I'm <span class="highlight">M. Rossy Avian I.</span>!</h1>
           <div class="hero-connect">
             <span class="connect-label">Let's Connect</span>
             <span class="connect-arrow">›</span>
-            <a href="https://github.com/username" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
-            <a href="https://linkedin.com/in/username" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
-            <a href="https://twitter.com/username" target="_blank" rel="noopener" aria-label="Twitter">TW</a>
+            <a
+              href="https://github.com/mochrossy"
+              target="_blank"
+              rel="noopener"
+              aria-label="GitHub">GH</a
+            >
+            <a
+              href="https://www.linkedin.com/in/mochammad-rossy-avian-ishak-b684b721/"
+              target="_blank"
+              rel="noopener"
+              aria-label="LinkedIn">IN</a
+            >
+            <a
+              href="https://twitter.com/username"
+              target="_blank"
+              rel="noopener"
+              aria-label="Twitter">TW</a
+            >
             <a href="/rss.xml" aria-label="RSS">RSS</a>
           </div>
         </div>
@@ -78,34 +146,52 @@ const clients = [
       <div class="about-grid">
         <div class="about-text">
           <h2 class="section-title">Who am I?</h2>
-          <h3 class="about-tagline">I'm Moch. Rossy Avian I., a System Engineer, DevOps and CloudCode learner</h3>
+          <h3 class="about-tagline">
+            I'm Moch. Rossy Avian I., a System Engineer, DevOps and CloudCode
+            learner
+          </h3>
           <p>
-            Senior IT Consultant & DevOps Project Leader with over 19 years of
-            experience in IT infrastructure, database engineering, and enterprise
-            project management. Proven track record of architecting resilient
-            system solutions and leading nationwide infrastructure rollouts.
+            I am an IT professional with experience since 2006 across backend
+            development, web applications, ITSM, cloud networking, and
+            infrastructure operations. I have worked with clients in banking,
+            mining, telecommunications, automotive, and IT consultancy. Based in
+            Indonesia · Available for full-time, long-term roles after
+            consultation.
           </p>
           <div class="connect-block">
             <span class="connect-label-dark">Connect with me</span>
             <span class="connect-arrow-dark">›</span>
-            <a href="https://github.com/username" target="_blank" rel="noopener">GH</a>
-            <a href="https://linkedin.com/in/username" target="_blank" rel="noopener">IN</a>
+            <a
+              href="https://github.com/mochrossy"
+              target="_blank"
+              rel="noopener">GH</a
+            >
+            <a
+              href="https://www.linkedin.com/in/mochammad-rossy-avian-ishak-b684b721/"
+              target="_blank"
+              rel="noopener">IN</a
+            >
           </div>
           <a href="/about" class="link-arrow">Learn more about me →</a>
         </div>
 
         <div class="about-skills">
-          {skills.map(skill => (
-            <div class="skill-item">
-              <div class="skill-header">
-                <span class="skill-name">{skill.name}</span>
-                <span class="skill-level">{skill.level}%</span>
+          {
+            skills.map((skill) => (
+              <div class="skill-item">
+                <div class="skill-header">
+                  <span class="skill-name">{skill.name}</span>
+                  <span class="skill-level">{skill.level}%</span>
+                </div>
+                <div class="skill-bar">
+                  <div
+                    class="skill-bar-fill"
+                    style={`width: ${skill.level}%`}
+                  />
+                </div>
               </div>
-              <div class="skill-bar">
-                <div class="skill-bar-fill" style={`width: ${skill.level}%`}></div>
-              </div>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
     </div>
@@ -115,30 +201,36 @@ const clients = [
   <section class="section" id="portfolio">
     <div class="container">
       <h2 class="section-title centered">Check out my Portfolio</h2>
-      <p class="section-subtitle centered">Here's what I have done with the past</p>
+      <p class="section-subtitle centered">
+        Here's what I have done with the past
+      </p>
 
-      {projects.length === 0 ? (
-        <p class="empty">No projects yet.</p>
-      ) : (
-        <div class="grid-2">
-          {projects.map(project => {
-            const slug = project.id.replace(/^en\//, '');
-            return (
-              <a href={`/portfolio/${slug}`} class="text-card">
-                <span class="text-card-category">{project.data.category}</span>
-                <h3 class="text-card-title">{project.data.title}</h3>
-                <p class="text-card-desc">{project.data.description}</p>
-                <div class="text-card-tech">
-                  {project.data.techStack.slice(0, 4).map(tech => (
-                    <span class="tech-chip">{tech}</span>
-                  ))}
-                </div>
-                <span class="text-card-cta">Read case study →</span>
-              </a>
-            );
-          })}
-        </div>
-      )}
+      {
+        projects.length === 0 ? (
+          <p class="empty">No projects yet.</p>
+        ) : (
+          <div class="grid-2">
+            {projects.map((project) => {
+              const slug = project.id.replace(/^en\//, "");
+              return (
+                <a href={`/portfolio/${slug}`} class="text-card">
+                  <span class="text-card-category">
+                    {project.data.category}
+                  </span>
+                  <h3 class="text-card-title">{project.data.title}</h3>
+                  <p class="text-card-desc">{project.data.description}</p>
+                  <div class="text-card-tech">
+                    {project.data.techStack.slice(0, 4).map((tech) => (
+                      <span class="tech-chip">{tech}</span>
+                    ))}
+                  </div>
+                  <span class="text-card-cta">Read case study →</span>
+                </a>
+              );
+            })}
+          </div>
+        )
+      }
 
       <div class="section-footer">
         <a href="/portfolio" class="btn btn-outline">View All Portfolio →</a>
@@ -150,40 +242,50 @@ const clients = [
   <section class="section section-alt" id="clients">
     <div class="container">
       <h2 class="section-title centered">My Latest Clients</h2>
-      <p class="section-subtitle centered">Trusted by organizations and teams</p>
+      <p class="section-subtitle centered">
+        Trusted by organizations and teams
+      </p>
 
-     <div class="clients-row">
-  {clients.map(client => (
-    <a href={client.url} target="_blank" rel="noopener" class="client-item" title={client.name}>
-      <img src={client.logo} alt={client.name} loading="lazy" />
-    </a>
-  ))}
-</div>
+      <div class="clients-row">
+        {
+          clients.map((client) => (
+            <a
+              href={client.url}
+              target="_blank"
+              rel="noopener"
+              class="client-item"
+              title={client.name}
+            >
+              <img src={client.logo} alt={client.name} loading="lazy" />
+            </a>
+          ))
+        }
+      </div>
     </div>
   </section>
-
+  <!-- ============ CLIENTS ============ -->
   <section class="section statistics" id="statistics">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <div class="stat-value">{projectsCount}</div>
-        <div class="stat-label">Projects</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value">19+</div>
-        <div class="stat-label">Years Experience</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value">{postsCount}</div>
-        <div class="stat-label">Articles</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value">10+</div>
-        <div class="stat-label">Happy Clients</div>
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value">{projectsCount}</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">19+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">{postsCount}</div>
+          <div class="stat-label">Articles</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">10+</div>
+          <div class="stat-label">Happy Clients</div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- ============ BLOG (TEXT ONLY) ============ -->
   <section class="section" id="blog">
@@ -191,26 +293,33 @@ const clients = [
       <h2 class="section-title centered">I also like to write</h2>
       <p class="section-subtitle centered">Check out my latest posts</p>
 
-      {posts.length === 0 ? (
-        <p class="empty">No posts yet.</p>
-      ) : (
-        <div class="grid-3">
-          {posts.map(post => {
-            const slug = post.id.replace(/^en\//, '');
-            const formattedDate = post.data.publishedAt.toLocaleDateString('en-US', {
-              day: 'numeric', month: 'long', year: 'numeric'
-            });
-            return (
-              <a href={`/blog/${slug}`} class="text-card">
-                <span class="text-card-category">{post.data.category}</span>
-                <h3 class="text-card-title">{post.data.title}</h3>
-                <p class="text-card-desc">{post.data.description}</p>
-                <span class="text-card-date">{formattedDate}</span>
-              </a>
-            );
-          })}
-        </div>
-      )}
+      {
+        posts.length === 0 ? (
+          <p class="empty">No posts yet.</p>
+        ) : (
+          <div class="grid-3">
+            {posts.map((post) => {
+              const slug = post.id.replace(/^en\//, "");
+              const formattedDate = post.data.publishedAt.toLocaleDateString(
+                "en-US",
+                {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                },
+              );
+              return (
+                <a href={`/blog/${slug}`} class="text-card">
+                  <span class="text-card-category">{post.data.category}</span>
+                  <h3 class="text-card-title">{post.data.title}</h3>
+                  <p class="text-card-desc">{post.data.description}</p>
+                  <span class="text-card-date">{formattedDate}</span>
+                </a>
+              );
+            })}
+          </div>
+        )
+      }
 
       <div class="section-footer">
         <a href="/blog" class="btn btn-outline">View All Posts →</a>
@@ -230,18 +339,36 @@ const clients = [
 
 <style>
   /* ============ SECTION BASE ============ */
-  .section { padding: 5rem 0; }
-  .section-alt { background: var(--color-bg-alt); }
-  .section-title { font-size: 2.5rem; margin-bottom: 1rem; }
-  .section-title.centered { text-align: center; }
+  .section {
+    padding: 5rem 0;
+  }
+  .section-alt {
+    background: var(--color-bg-alt);
+  }
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .section-title.centered {
+    text-align: center;
+  }
   .section-subtitle {
     font-size: 1.1rem;
     color: var(--color-text-muted);
     margin-bottom: 3rem;
   }
-  .section-subtitle.centered { text-align: center; }
-  .section-footer { text-align: center; margin-top: 3rem; }
-  .empty { text-align: center; color: var(--color-text-muted); padding: 3rem; }
+  .section-subtitle.centered {
+    text-align: center;
+  }
+  .section-footer {
+    text-align: center;
+    margin-top: 3rem;
+  }
+  .empty {
+    text-align: center;
+    color: var(--color-text-muted);
+    padding: 3rem;
+  }
 
   /* ============ HERO ============ */
   .hero {
@@ -268,14 +395,18 @@ const clients = [
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     background: #e2e8f0;
   }
-  .hero-text { flex: 1; }
+  .hero-text {
+    flex: 1;
+  }
   .hero h1 {
     color: white;
     font-size: 2.25rem;
     margin-bottom: 1rem;
     line-height: 1.2;
   }
-  .hero h1 .highlight { color: #ffd646; }
+  .hero h1 .highlight {
+    color: #ffd646;
+  }
   .hero-connect {
     display: flex;
     align-items: center;
@@ -289,7 +420,10 @@ const clients = [
     font-weight: 600;
     opacity: 0.9;
   }
-  .connect-arrow { opacity: 0.6; font-size: 1.2rem; }
+  .connect-arrow {
+    opacity: 0.6;
+    font-size: 1.2rem;
+  }
   .hero-connect a {
     display: inline-flex;
     align-items: center;
@@ -341,7 +475,10 @@ const clients = [
     font-weight: 700;
     color: var(--color-text-muted);
   }
-  .connect-arrow-dark { color: var(--color-primary); font-size: 1.2rem; }
+  .connect-arrow-dark {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+  }
   .connect-block a {
     display: inline-flex;
     align-items: center;
@@ -366,7 +503,9 @@ const clients = [
     font-weight: 700;
     color: var(--color-primary);
   }
-  .link-arrow:hover { color: var(--color-primary-dark); }
+  .link-arrow:hover {
+    color: var(--color-primary-dark);
+  }
   .about-skills {
     display: flex;
     flex-direction: column;
@@ -420,7 +559,9 @@ const clients = [
     padding: 1.75rem;
     border-radius: 12px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
     color: inherit;
     text-decoration: none;
     border-left: 4px solid var(--color-primary);
@@ -450,7 +591,9 @@ const clients = [
     color: var(--color-primary);
     line-height: 1.35;
   }
-  .text-card:hover .text-card-title { color: var(--color-primary-dark); }
+  .text-card:hover .text-card-title {
+    color: var(--color-primary-dark);
+  }
   .text-card-desc {
     color: var(--color-text-muted);
     font-size: 0.92rem;
@@ -483,7 +626,9 @@ const clients = [
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
-  .text-card:hover .text-card-cta { color: #ffd646; }
+  .text-card:hover .text-card-cta {
+    color: #ffd646;
+  }
 
   /* ============ CLIENTS ============ -->
  .clients-row {
@@ -541,8 +686,16 @@ const clients = [
     padding: 5rem 0;
     text-align: center;
   }
-  .cta-section h2 { color: white; font-size: 2.5rem; margin-bottom: 1rem; }
-  .cta-section p { font-size: 1.15rem; opacity: 0.9; margin-bottom: 2rem; }
+  .cta-section h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .cta-section p {
+    font-size: 1.15rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
 
   /* ============ BUTTONS ============ */
   .btn {
@@ -560,29 +713,52 @@ const clients = [
     border: 2px solid var(--color-primary);
     color: var(--color-primary);
   }
-  .btn-outline:hover { background: var(--color-primary); color: white; }
+  .btn-outline:hover {
+    background: var(--color-primary);
+    color: white;
+  }
   .btn-yellow {
     background: #ffd646;
     color: #5540af;
     font-size: 1rem;
     padding: 1rem 2.5rem;
   }
-  .btn-yellow:hover { background: #ffc107; }
+  .btn-yellow:hover {
+    background: #ffc107;
+  }
 
   /* ============ RESPONSIVE ============ */
   @media (max-width: 768px) {
-    .section { padding: 3rem 0; }
-    .section-title { font-size: 1.75rem; }
+    .section {
+      padding: 3rem 0;
+    }
+    .section-title {
+      font-size: 1.75rem;
+    }
     .hero-inner {
       flex-direction: column;
       text-align: center;
       gap: 1.5rem;
     }
-    .hero-photo img { width: 140px; height: 140px; }
-    .hero h1 { font-size: 1.75rem; }
-    .hero-connect { justify-content: center; }
-    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .about-skills { padding-top: 0; }
-    .cta-section h2 { font-size: 1.75rem; }
+    .hero-photo img {
+      width: 140px;
+      height: 140px;
+    }
+    .hero h1 {
+      font-size: 1.75rem;
+    }
+    .hero-connect {
+      justify-content: center;
+    }
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .about-skills {
+      padding-top: 0;
+    }
+    .cta-section h2 {
+      font-size: 1.75rem;
+    }
   }
 </style>

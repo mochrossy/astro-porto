@@ -10,10 +10,20 @@ featured: true
 order: 1
 ---
 
+![Screenshot Zimbra](../../../../public/images/clients/zimbrapemkab01.png)
+
 ## Background
 
-The Bekasi Local Government required a secure, centralized, and
-easy-to-manage internal email system for communication between departments.
+Internal email communication requires a centralized server that is efficient, secure, and easy to manage. Zimbra was chosen because it is open source, supports multiple domains, mailbox quotas, antivirus, antispam, and web-based administration.
+
+The Bekasi Regency Government needed a secure, centralized, and easy-to-manage internal email system for communication between departments.
+
+## Objectives
+
+- Build an internal mail server.
+- Configure hostname, IP address, and DNS.
+- Install Zimbra.
+- Test email delivery and account creation.
 
 ## Challenges
 
@@ -22,17 +32,25 @@ easy-to-manage internal email system for communication between departments.
 - Data migration from the previous system
 - Training for internal administrators
 
-## Solution
+## Implementation Stages
 
-Implemented Zimbra Collaboration Suite on Ubuntu Server
-with the following configuration:
-
-1. **DNS Server** using BIND9 for domain name resolution
-2. **Zimbra MTA** for email routing
-3. **Zimbra LDAP** for user authentication
-4. **Antivirus & Antispam** for email security
+1. Configure hostname and TCP/IP.
+2. Configure BIND9 DNS.
+3. Update the package database.
+4. Disable Postfix, Apache, and OpenLDAP services.
+5. Install Zimbra dependencies.
+6. Download and extract Zimbra.
+7. Install and configure Zimbra.
+8. Test `zmcontrol status`, the admin panel, and webmail.
 
 ## Results
 
-The mail server operates stably with 99.9% uptime. Internal email
-communication between departments has become more efficient and centralized.
+All Zimbra services are running. The admin panel is accessible, email accounts were created successfully, and users can log in through webmail on the intranet. In addition, I conducted user training so that all employees across the regency government could become familiar with using this email tool.
+
+## Lessons Learned
+
+Correct DNS and hostname configuration is essential. Default services must be disabled before installing Zimbra. Good documentation makes troubleshooting and handover easier.
+
+## Impact
+
+The mail server runs stably with 99.9% uptime. Internal email communication between departments has become more efficient and centralized. Zimbra also provides intranet chat between users, so no additional application is required.
