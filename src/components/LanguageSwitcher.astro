@@ -1,0 +1,63 @@
+---
+import {
+  getLangFromUrl,
+  getAlternateLang,
+  translatePath,
+  languages,
+} from "../i18n";
+
+const currentLang = getLangFromUrl(Astro.url);
+const alternateLang = getAlternateLang(currentLang);
+const alternateUrl = translatePath(Astro.url.pathname, alternateLang);
+
+const currentLabel = languages[currentLang];
+const alternateLabel = languages[alternateLang];
+---
+
+<div class="lang-switcher">
+  <a
+    href={alternateUrl}
+    class="lang-link"
+    title={`Switch to ${alternateLabel}`}
+  >
+    <span class="lang-icon">🌐</span>
+    <span class="lang-label">{alternateLabel}</span>
+  </a>
+</div>
+
+<style>
+  .lang-switcher {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .lang-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .lang-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #ffd646;
+    color: #ffd646;
+  }
+
+  .lang-icon {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .lang-label {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+</style>
