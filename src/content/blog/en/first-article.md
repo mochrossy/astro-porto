@@ -1,7 +1,8 @@
 ---
-title: First Article"
+title: "First Article"
 description: "From Infrastructure to Astro: Finding My Way Back to Code."
 publishedAt: 2026-10-01
+cover: "/images/astro-logo.jpg"
 category: "General"
 tags: ["Astro", "Career", "Web Development", "Portfolio", "IT Journey"]
 ---

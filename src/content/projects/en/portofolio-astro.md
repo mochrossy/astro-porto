@@ -27,6 +27,7 @@ Generation approach with Astro.
 
 - Blog with Content Collections
 - Portfolio with complete details
+- Bilingual Pages for Blog and Portfolio
 - Search engine friendly (SEO)
 - Sitemap XML and RSS feed
 

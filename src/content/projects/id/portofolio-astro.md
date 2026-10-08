@@ -27,6 +27,7 @@ memilih pendekatan Static Site Generation dengan Astro.
 
 - Blog dengan Content Collections
 - Portfolio dengan detail lengkap
+- Halaman Bilingual untuk Blog dan Portfolio
 - Search engine friendly (SEO)
 - Sitemap XML dan RSS feed
 
