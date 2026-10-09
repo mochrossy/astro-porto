@@ -70,12 +70,8 @@ const services = [
 ];
 
 // Clients — hardcoded; edit di sini kalau mau tambah/hapus
+
 const clients = [
-  {
-    name: "Agit",
-    logo: "/images/clients/agit.png",
-    url: "https://www.ag-it.com/",
-  },
   {
     name: "Pemda Bekasi Kabupaten",
     logo: "/images/clients/pemdakabbes.png",
@@ -92,9 +88,14 @@ const clients = [
     url: "https://www.cimbniaga.co.id/id/home/welcome",
   },
   {
-    name: "Astra International",
-    logo: "/images/clients/astra.png",
-    url: "https://www.astra.co.id/",
+    name: "Bank Danamon",
+    logo: "/images/clients/client3.png",
+    url: "https://www.danamon.co.id/",
+  },
+  {
+    name: "Giant Supermarket",
+    logo: "/images/clients/giant.svg",
+    url: "#",
   },
 ];
 ---
@@ -243,7 +244,30 @@ const clients = [
       <p class="section-subtitle centered">
         Trusted by organizations and teams
       </p>
+      <div class="clients-row">
+        {
+          clients.map((client) => (
+            <a
+              href={client.url}
+              target="_blank"
+              rel="noopener"
+              class="client-item"
+              title={client.name}
+            >
+              <img
+                src={client.logo}
+                alt={client.name}
+                loading="lazy"
+                class="client-logo-img"
+              />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
+  <!-- 
       <div class="clients-row">
         {
           clients.map((client) => (
@@ -261,6 +285,7 @@ const clients = [
       </div>
     </div>
   </section>
+-->
   <!-- ============ CLIENTS ============ -->
   <section class="section statistics" id="statistics">
     <div class="container">
@@ -628,55 +653,70 @@ const clients = [
     color: #ffd646;
   }
 
-  /* ============ CLIENTS ============ -->
- .clients-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 1.25rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
+  /* ============ CLIENTS ============ */
 
-.client-item {
-  flex: 0 0 auto;
-  width: 150px;
-  height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #ffffff;
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
-  padding: 0.75rem;
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-  text-decoration: none;
-  overflow: hidden;
-}
+  .clients-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
 
-.client-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(85, 64, 175, 0.12);
-  border-color: #5540af;
-}
+  .client-item {
+    flex: 0 0 auto;
+    width: 150px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    padding: 0.75rem;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s,
+      border-color 0.2s;
+    text-decoration: none;
+    overflow: hidden;
+  }
 
-.client-item img {
-  display: block;
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 100% !important;
-  max-height: 100% !important;
-  object-fit: contain;
-  object-position: center;
-  filter: grayscale(100%) opacity(0.75);
-  transition: filter 0.3s;
-}
+  .client-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(85, 64, 175, 0.12);
+    border-color: #5540af;
+  }
 
-.client-item:hover img {
-  filter: grayscale(0%) opacity(1);
-}
+  .client-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+    filter: grayscale(100%) opacity(0.75); /* ← PERBAIKI TYPO DI SINI */
+    transition: filter 0.3s ease;
+  }
 
+  .client-item:hover img {
+    filter: grayscale(0%) opacity(1);
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .client-item {
+      width: 130px;
+      height: 80px;
+      padding: 0.6rem;
+    }
+    .clients-row {
+      gap: 0.75rem;
+    }
+  }
   /* ============ CTA ============ */
   .cta-section {
     background: linear-gradient(135deg, #5540af 0%, #3d2f80 100%);
