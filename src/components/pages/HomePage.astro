@@ -667,8 +667,8 @@ const clients = [
 
   .client-item {
     flex: 0 0 auto;
-    width: 150px;
-    height: 90px;
+    width: 220px;
+    height: 130px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -707,11 +707,23 @@ const clients = [
   }
 
   /* Responsive */
+  @media (max-width: 900px) {
+    .client-item {
+      width: 180px;
+      height: 110px;
+      padding: 0.6rem;
+    }
+    .clients-row {
+      gap: 0.75rem;
+    }
+  }
+
+  /* Mobile */
   @media (max-width: 640px) {
     .client-item {
-      width: 130px;
-      height: 80px;
-      padding: 0.6rem;
+      width: 140px;
+      height: 95px;
+      padding: 0.75rem;
     }
     .clients-row {
       gap: 0.75rem;
