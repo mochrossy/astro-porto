@@ -1,7 +1,7 @@
 ---
 title: "Technical Writing Case Study: Localizing a 170-Page Enterprise Tender Proposal"
 description: "A case study on translating a complex airport operations control center tender document — covering terminology management, document structure, and domain adaptation for enterprise IT proposals."
-publishedAt: 2025-01-01
+publishedAt: 2018-01-01
 tags:
   [
     "Technical Writing",
@@ -29,7 +29,7 @@ order: 3
 
 ## Overview
 
-This case study documents my work as a **technical writer and translator** on a 170-page enterprise tender proposal for an **Airport Operations Control Center (AOCC)** system. The source document was an English-language proposal from a large European IT vendor, and I was responsible for localizing it into Indonesian while preserving technical accuracy, terminology consistency, and the document's formal proposal structure.
+This case study documents my work as a **Solution Engineer** on a 170-page enterprise tender proposal for an **Airport Operations Control Center (AOCC)** system. The source document was an English-language proposal from a large European IT vendor, and I was responsible for localizing it into Indonesian while preserving technical accuracy, terminology consistency, and the document's formal proposal structure.
 
 Due to the confidential nature of the project, all client names, vendor names, product names, and commercially sensitive information have been removed or anonymized. What remains is a demonstration of the technical writing process itself.
 
