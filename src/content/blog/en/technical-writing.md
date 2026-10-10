@@ -1,7 +1,7 @@
 ---
 title: "Technical Writing Case Study"
 description: "New portfolio piece: Technical Writing Case Study."
-publishedAt: 2018-12-01
+publishedAt: 2014-12-01
 tags:
   [
     "Technical Writing",
@@ -37,4 +37,4 @@ It wasn't just translation. It required:
 
 The document itself remains confidential, so this piece is a process case study — what I did, how I did it, and what I learned.
 
-Read the case study: [https://astro-porto.miraqu.workers.dev/portfolio/tender-dok]
+Read the case study: [https://astro-porto.miraqu.workers.dev/portfolio/tender-doc]
