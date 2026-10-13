@@ -26,7 +26,7 @@ status: "Completed"
 
 New portfolio piece: Technical Writing Case Study
 
-I recently localized a 170-page enterprise tender proposal for an Airport Operations Control Center — from English to Indonesian.
+In my days I localized a 170-page enterprise tender proposal for an Airport Operations Control Center — from English to Indonesian.
 
 It wasn't just translation. It required:
 → Domain research (aviation, AODB, RMS, integration middleware)

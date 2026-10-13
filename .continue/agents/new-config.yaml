@@ -1,0 +1,18 @@
+{
+  "models":
+    [
+      {
+        "title": "Devstral",
+        "provider": "ollama",
+        "model": "devstral",
+        "apiBase": "http://localhost:11434",
+      },
+    ],
+  "tabAutocompleteModel":
+    {
+      "title": "Qwen2.5-Coder",
+      "provider": "ollama",
+      "model": "qwen2.5-coder:1.5b",
+      "apiBase": "http://localhost:11434",
+    },
+}
